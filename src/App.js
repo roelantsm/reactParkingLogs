@@ -8,7 +8,7 @@ var AWS = require('aws-sdk');
 
 
 
-getQuickSightUrl = (idToken, username, callback) =>  {
+var getQuickSightUrl = (idToken, username, callback) =>  {
   //  console.log('Token '+ idToken);
   AWS.config.region = 'eu-west-1';
   AWS.config.credentials = new AWS.CognitoIdentityCredentials({
@@ -50,8 +50,8 @@ getQuickSightUrl = (idToken, username, callback) =>  {
           });
           var quicksight = new AWS.Service({
 
-              apiConfig: require("../quicksightconfig.json"),
-              region: "us-east-1"
+              //apiConfig: require("../quicksightconfig.json"),
+              region: "eu-west-1"
           });
           quicksight.registerUser(params, function (err, data1) {
               if (err) {
@@ -116,7 +116,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
 
-          {this.getQuickSightUrl}
+          {getQuickSightUrl}
           Edit4 <code>src/App.js</code> and save to reload.
         </p>
         <a
