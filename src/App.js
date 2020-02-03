@@ -8,7 +8,7 @@ var AWS = require('aws-sdk');
 
 
 
-this.getQuickSightUrl = function (idToken, username, callback) {
+getQuickSightUrl = (idToken, username, callback) =>  {
   //  console.log('Token '+ idToken);
   AWS.config.region = 'eu-west-1';
   AWS.config.credentials = new AWS.CognitoIdentityCredentials({
@@ -115,7 +115,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit3 <code>src/App.js</code> and save to reload.
+
+          {this.getQuickSightUrl}
+          Edit4 <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
