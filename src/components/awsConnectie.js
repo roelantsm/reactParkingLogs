@@ -34,15 +34,15 @@ render() {
         sts.assumeRole(params, function (err, data) {
             if (err) console.log("Assumwe erri :::::::::::::::::: ", err, err.stack);
             else {
-                // var params = {
-                //     AwsAccountId: 'XXXXXXXX',
-                //     Email: 'XXXXXXXXXXXXX',
-                //     IdentityType: 'IAM', //| QUICKSIGHT, /* required */
-                //     Namespace: 'default',
-                //     UserRole: 'READER', //ADMIN | AUTHOR | READER | RESTRICTED_AUTHOR | RESTRICTED_READER, /* required */
-                //     IamArn: 'arn:aws:iam::550242960653:role/Cognito_quicksightReadersAuth_Role',
-                //     SessionName: 'michielReader',
-                // };
+                var params = {
+                    AwsAccountId: '550242960653',
+                    Email: 'michieltestingadapter@gmail.com',
+                    IdentityType: 'IAM', //| QUICKSIGHT, /* required */
+                    Namespace: 'default',
+                    UserRole: 'READER', //ADMIN | AUTHOR | READER | RESTRICTED_AUTHOR | RESTRICTED_READER, /* required */
+                    IamArn: 'arn:aws:iam::550242960653:role/Cognito_quicksightReadersAuth_Role',
+                    SessionName: 'michielReader',
+                };
 
 
                 AWS.config.update({
