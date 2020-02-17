@@ -12,7 +12,7 @@ function App() {
         
           <AwsConnectie />
         <p>
-          Edit4 <code>src/App.js</code> and save to reload.
+          Edit5 <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
