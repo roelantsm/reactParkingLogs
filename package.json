@@ -6,8 +6,11 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
+    "amazon-cognito-identity-js": "^3.2.4",
     "amazon-quicksight-embedding-sdk": "^1.0.6",
-    "aws-sdk": "^2.610.0",
+    "aws-sdk": "^2.619.0",
+    "js-polyfills": "^0.1.42",
+    "node-fetch": "^2.6.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0"
