@@ -156,7 +156,7 @@ export default class awsConnectie extends Component {
         return new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
     }
 
-    componentDidMount= (awsData) =>  {
+    componentDidMount= () =>  {
 
       //  const script = document.createElement("script");
       //  script.src = "https://quicksightembwebapp-thebucket-fw4llqam7or4.s3.amazonaws.com/amazon-cognito-identity.min.js";
@@ -243,7 +243,7 @@ render() {
                     if (err) {
                         console.log(":::::::::::::::::::::::");
                         console.log(JSON.stringify(err));
-                        if (err.statusCode == 409) {
+                        if (err.statusCode === 409) {
                             // console.log("Register User :::::::::::::::: ", data1);
                             quicksight.getDashboardEmbedUrl({
                                     AwsAccountId:"550242960653",
