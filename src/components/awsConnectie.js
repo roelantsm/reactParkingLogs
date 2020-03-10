@@ -3,9 +3,9 @@ import $ from 'jquery';
 import axios from 'axios';
 var QuickSightEmbedding = require("amazon-quicksight-embedding-sdk");
 var AWS = require('aws-sdk');
-var QuickSightEmbedding2 = require('./../libs/quicksight-2018-04-01.min.json')
+//var QuickSightEmbedding2 = require('./../libs/quicksight-2018-04-01.min.json')
 
-const sts = new AWS.STS();
+// const sts = new AWS.STS();
 
 
 global.fetch = require('node-fetch')
@@ -190,108 +190,108 @@ export default class awsConnectie extends Component {
 
 render() {
 
-    const embedDashboardCognitoAuthenticated = (awsData) =>  {
-        console.log("hi");
-    }
+    // const embedDashboardCognitoAuthenticated = (awsData) =>  {
+    //     console.log("hi");
+    // }
 
     
 
 
     // TO DO
-    const quicksightUrl = () =>  {
+    // const quicksightUrl = () =>  {
 
-        console.log("hello");
+    //     console.log("hello");
 
-        var params = {
-            //DurationSeconds: 3600,
-            //ExternalId: "123ABC",
-            RoleArn: "arn:aws:iam::550242960653:role/Cognito_quicksightReadersAuth_Role",
-            RoleSessionName: "michielReader"
-        };
-        var sts = new AWS.STS({
-            apiVersion: '2011-06-15'
-        });
-
-
-        sts.assumeRole(params, function (err, data) {
-            if (err) console.log("Assumwe erri :::::::::::::::::: ", err, err.stack);
-            else {
-                var params = {
-                    AwsAccountId: '550242960653',
-                    Email: 'michieltestingadapter@gmail.com',
-                    IdentityType: 'IAM', //| QUICKSIGHT, /* required */
-                    Namespace: 'default',
-                    UserRole: 'READER', //ADMIN | AUTHOR | READER | RESTRICTED_AUTHOR | RESTRICTED_READER, /* required */
-                    IamArn: 'arn:aws:iam::550242960653:role/Cognito_quicksightReadersAuth_Role',
-                    SessionName: 'michielReader',
-                };
+    //     var params = {
+    //         //DurationSeconds: 3600,
+    //         //ExternalId: "123ABC",
+    //         RoleArn: "arn:aws:iam::550242960653:role/Cognito_quicksightReadersAuth_Role",
+    //         RoleSessionName: "michielReader"
+    //     };
+    //     var sts = new AWS.STS({
+    //         apiVersion: '2011-06-15'
+    //     });
 
 
-                AWS.config.update({
-                    accessKeyId: data.Credentials.AccessKeyId,
-                    secretAccessKey: data.Credentials.SecretAccessKey,
-                    sessionToken: data.Credentials.SessionToken,
-                    "region": "eu-west-1"
-                });
+    //     sts.assumeRole(params, function (err, data) {
+    //         if (err) console.log("Assumwe erri :::::::::::::::::: ", err, err.stack);
+    //         else {
+    //             var params = {
+    //                 AwsAccountId: '550242960653',
+    //                 Email: 'michieltestingadapter@gmail.com',
+    //                 IdentityType: 'IAM', //| QUICKSIGHT, /* required */
+    //                 Namespace: 'default',
+    //                 UserRole: 'READER', //ADMIN | AUTHOR | READER | RESTRICTED_AUTHOR | RESTRICTED_READER, /* required */
+    //                 IamArn: 'arn:aws:iam::550242960653:role/Cognito_quicksightReadersAuth_Role',
+    //                 SessionName: 'michielReader',
+    //             };
 
-                var quicksight = new AWS.Service({
-                    apiConfig: require('./../libs/quicksight-2018-04-01.min.json'),
-                    region: 'eu-west-1',
-                });
 
-                quicksight.registerUser(params, function (err, data1) {
-                    if (err) {
-                        console.log(":::::::::::::::::::::::");
-                        console.log(JSON.stringify(err));
-                        if (err.statusCode === 409) {
-                            // console.log("Register User :::::::::::::::: ", data1);
-                            quicksight.getDashboardEmbedUrl({
-                                    AwsAccountId:"550242960653",
-                                    DashboardId: "7159b851-5055-4c5e-9eb9-3e695334cf2e",
-                                    IdentityType: "IAM",
-                                    ResetDisabled: true,
-                                    SessionLifetimeInMinutes: 400,
-                                    UndoRedoDisabled: false
-                                },
-                                function (err, data) {
-                                    if (!err) {
-                                        console.log(Date());
+    //             AWS.config.update({
+    //                 accessKeyId: data.Credentials.AccessKeyId,
+    //                 secretAccessKey: data.Credentials.SecretAccessKey,
+    //                 sessionToken: data.Credentials.SessionToken,
+    //                 "region": "eu-west-1"
+    //             });
 
-                                        //callback(data);
-                                    } else {
-                                        console.log(err);
+    //             var quicksight = new AWS.Service({
+    //                 apiConfig: require('./../libs/quicksight-2018-04-01.min.json'),
+    //                 region: 'eu-west-1',
+    //             });
 
-                                        //callback();
-                                    }
-                                }
-                            );
+    //             quicksight.registerUser(params, function (err, data1) {
+    //                 if (err) {
+    //                     console.log(":::::::::::::::::::::::");
+    //                     console.log(JSON.stringify(err));
+    //                     if (err.statusCode === 409) {
+    //                         // console.log("Register User :::::::::::::::: ", data1);
+    //                         quicksight.getDashboardEmbedUrl({
+    //                                 AwsAccountId:"550242960653",
+    //                                 DashboardId: "7159b851-5055-4c5e-9eb9-3e695334cf2e",
+    //                                 IdentityType: "IAM",
+    //                                 ResetDisabled: true,
+    //                                 SessionLifetimeInMinutes: 400,
+    //                                 UndoRedoDisabled: false
+    //                             },
+    //                             function (err, data) {
+    //                                 if (!err) {
+    //                                     console.log(Date());
 
-                        }
-                        console.log("err register user ::::::::::::::::::", err, err.stack);
-                    } // an error occurred
+    //                                     //callback(data);
+    //                                 } else {
+    //                                     console.log(err);
 
-                    else {
-                        // console.log("Register User :::::::::::::::: ", data1);
-                        quicksight.getDashboardEmbedUrl({
-                            AwsAccountId: "550242960653",
-                            DashboardId: "7159b851-5055-4c5e-9eb9-3e695334cf2e",
-                            IdentityType: "IAM",
-                            ResetDisabled: true,
-                            SessionLifetimeInMinutes: 400,
-                            UndoRedoDisabled: false
-                        },
-                        function (err, data) {
-                            if (!err) {
-                                console.log(Date());
-                                // callback(data);
-                            } else {
-                                console.log(err);
-                                // callback();
-                            }
-                        }
-                    );
-                }
-            });
+    //                                     //callback();
+    //                                 }
+    //                             }
+    //                         );
+
+    //                     }
+    //                     console.log("err register user ::::::::::::::::::", err, err.stack);
+    //                 } // an error occurred
+
+    //                 else {
+    //                     // console.log("Register User :::::::::::::::: ", data1);
+    //                     quicksight.getDashboardEmbedUrl({
+    //                         AwsAccountId: "550242960653",
+    //                         DashboardId: "7159b851-5055-4c5e-9eb9-3e695334cf2e",
+    //                         IdentityType: "IAM",
+    //                         ResetDisabled: true,
+    //                         SessionLifetimeInMinutes: 400,
+    //                         UndoRedoDisabled: false
+    //                     },
+    //                     function (err, data) {
+    //                         if (!err) {
+    //                             console.log(Date());
+    //                             // callback(data);
+    //                         } else {
+    //                             console.log(err);
+    //                             // callback();
+    //                         }
+    //                     }
+    //                 );
+    //             }
+    //         });
 
 
 
@@ -334,80 +334,80 @@ render() {
 
 
 
-            }
-        });
-    }
+    //         }
+    //     });
+    // }
 
 
 
 
 
 
-    const autehnticateUser = () =>  {
+    // const autehnticateUser = () =>  {
 
-        var authenticationData = {
-            Username: 'michielReader',
-            Password: 'St9zp7wr40@',
-        };
-        var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
-            authenticationData
-        );
+    //     var authenticationData = {
+    //         Username: 'michielReader',
+    //         Password: 'St9zp7wr40@',
+    //     };
+    //     var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
+    //         authenticationData
+    //     );
         
-        var poolData = {
-            UserPoolId: 'eu-west-1_GSraaQczW', // Your user pool id here
-            ClientId: '5fcrcsmjubgj0mj1vu649o7cv8', // Your client id here
-        };
-        var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-        var userData = {
-            Username: 'michielReader',
-            Pool: userPool,
-        };
+    //     var poolData = {
+    //         UserPoolId: 'eu-west-1_GSraaQczW', // Your user pool id here
+    //         ClientId: '5fcrcsmjubgj0mj1vu649o7cv8', // Your client id here
+    //     };
+    //     var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+    //     var userData = {
+    //         Username: 'michielReader',
+    //         Pool: userPool,
+    //     };
         
-        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    //     var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
         
         
 
-        cognitoUser.authenticateUser(authenticationDetails, {
+    //     cognitoUser.authenticateUser(authenticationDetails, {
 
                 
 
-                onSuccess: function(result) {
+    //             onSuccess: function(result) {
         
-                var accessToken = result.getAccessToken().getJwtToken();
-                console.log(accessToken);
+    //             var accessToken = result.getAccessToken().getJwtToken();
+    //             console.log(accessToken);
         
-                AWS.config.region = 'eu-west-1';
+    //             AWS.config.region = 'eu-west-1';
         
-                AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-                    IdentityPoolId: 'eu-west-1:fc807ce7-380b-4387-b02b-35bc05e08c8a', // your identity pool id here
-                    Logins: {
-                        // Change the key below according to the specific region your user pool is in.
-                        'cognito-idp.eu-west-1.amazonaws.com/eu-west-1_GSraaQczW': result
-                            .getIdToken()
-                            .getJwtToken(),
-                    },
-                });
+    //             AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    //                 IdentityPoolId: 'eu-west-1:fc807ce7-380b-4387-b02b-35bc05e08c8a', // your identity pool id here
+    //                 Logins: {
+    //                     // Change the key below according to the specific region your user pool is in.
+    //                     'cognito-idp.eu-west-1.amazonaws.com/eu-west-1_GSraaQczW': result
+    //                         .getIdToken()
+    //                         .getJwtToken(),
+    //                 },
+    //             });
         
-                //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
-                AWS.config.credentials.refresh(error => {
-                    if (error) {
-                        console.error(error);
-                    } else {
-                        // Instantiate aws sdk service objects now that the credentials have been updated.
-                        // example: var s3 = new AWS.S3();
+    //             //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+    //             AWS.config.credentials.refresh(error => {
+    //                 if (error) {
+    //                     console.error(error);
+    //                 } else {
+    //                     // Instantiate aws sdk service objects now that the credentials have been updated.
+    //                     // example: var s3 = new AWS.S3();
 
 
-                        quicksightUrl();
-                        console.log('Successfully logged!');
-                    }
-                });
-            },
+    //                     quicksightUrl();
+    //                     console.log('Successfully logged!');
+    //                 }
+    //             });
+    //         },
         
-            onFailure: function(err) {
-                alert(err.message || JSON.stringify(err));
-            },
-        });
-    };
+    //         onFailure: function(err) {
+    //             alert(err.message || JSON.stringify(err));
+    //         },
+    //     });
+    // };
 
         return (
             <div>
