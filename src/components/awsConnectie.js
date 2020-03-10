@@ -169,7 +169,7 @@ export default class awsConnectie extends Component {
         var awsData = {
             cognitoAuthenticatedUserName:'samuel',
             cognitoAuthenticatedUserPassword:'manageMANAGE33@',
-            dashboardId: '8cae0751-cf0c-4c7d-ac41-fe03c4a49936',
+            dashboardId: '7159b851-5055-4c5e-9eb9-3e695334cf2e',
             region:'eu-west-1',
             cognitoIdentityPoolId:'eu-west-1:43556396-48ea-4df7-b073-e46e8f8d6c7d',
             cognitoAuthenticatedUserPoolId:'eu-west-1_Z4bkJQ9Df',
