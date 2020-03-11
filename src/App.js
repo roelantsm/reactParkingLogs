@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 
-import AwsConnectie from './components/hulpfuncties/awsConnectie';
+//import AwsConnectie from './components/hulpfuncties/awsConnectie';
 import Navbar from './components/Navbar';
 
 
@@ -26,7 +26,7 @@ function App() {
           <div>
             <Navbar />
             <Switch>
-              <Route path="/"  exact component={Home} exact />
+              <Route path="/"  exact component={Home} />
               <Route path="/billing" exact component={Billing} />
               <Route path="/post" exact  component={Post} />
               <Route path="/post/:post_id" exact component={DetailPage} />

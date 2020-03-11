@@ -1,6 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import { setTimeout } from 'timers'
+// import {Link} from 'react-router-dom'
+// import { setTimeout } from 'timers'
 
 
 export default function Home(props) {

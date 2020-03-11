@@ -2,9 +2,9 @@ import React from 'react'
 
 import { NavLink } from 'react-router-dom'; 
 
-import Home from './Pages/Home';
-import Billing from './Pages/Billing';
-import Post from './Pages/Post';
+// import Home from './Pages/Home';
+// import Billing from './Pages/Billing';
+// import Post from './Pages/Post';
 
 const  Navbar = () => {
     
