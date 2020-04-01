@@ -12,6 +12,7 @@ import Home from './components/Pages/Home'
 import Billing from './components/Pages/Billing'
 import Post from './components/Pages/Post'
 import DetailPage from './components/Pages/DetailPage';
+import Overzicht from './components/Pages/Overzicht';
 
 
 
@@ -27,6 +28,7 @@ function App() {
             <Navbar />
             <Switch>
               <Route path="/"  exact component={Home} />
+              <Route path="/overzicht"  exact component={Overzicht} />
               <Route path="/billing" exact component={Billing} />
               <Route path="/post" exact  component={Post} />
               <Route path="/detail/:plaats" exact component={DetailPage} />
