@@ -175,7 +175,7 @@ export default class DetailPage extends Component {
         var awsData = {
             cognitoAuthenticatedUserName:'samuel',
             cognitoAuthenticatedUserPassword:'manageMANAGE33@',
-            dashboardId: '90ed313f-b0fd-499d-96b3-ac32d5ad8054',
+            dashboardId: 'd9741310-7aa4-4371-9e56-95c05ae96c2f',
             region:'eu-west-1',
             cognitoIdentityPoolId:'eu-west-1:43556396-48ea-4df7-b073-e46e8f8d6c7d',
             cognitoAuthenticatedUserPoolId:'eu-west-1_Z4bkJQ9Df',
