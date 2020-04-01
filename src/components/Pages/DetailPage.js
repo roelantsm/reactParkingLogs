@@ -50,9 +50,13 @@ export default class DetailPage extends Component {
         var params = {
                 url: embedUrl,
                 container: containerDiv,
-                height: "1500px"
+                height: "1500px",
+                parameters: {
+                    groupId: this.state.id                  
+                },
             };
             var dashboard = QuickSightEmbedding.embedDashboard(params);
+            dashboard.setParameters({groupId: this.state.id});
             dashboard.on('error', this.onError);
             dashboard.on('load', this.onVisualLoaded);
     }
