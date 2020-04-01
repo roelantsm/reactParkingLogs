@@ -2,23 +2,75 @@ import React, { Component } from 'react'
 // import {Link} from 'react-router-dom'
 // import { setTimeout } from 'timers'
 
+import { NavLink } from 'react-router-dom'; 
+
 
 export default class Home extends Component {
 
 
-    constructor(props) {
-        super(props);
+    state = {
+        ws: null,
+        parkeerplaatsen: {
 
-        this.state = {
-            ws: null
-        };
+            KontichVrij: null,
+            KontichBezet: null,
+            KontichTotal:null,
+            
+            BrusselVrij: null,
+            BrusselBezet: null,
+            BrusselTotal:null,
+
+            AntwerpenVrij: null,
+            AntwerpenhBezet: null,
+            AntwerpenTotal:null
+        }
     }
+
+    // constructor(props) {
+    //     super(props);
+
+    //    //  this.state = {
+    //     //     ws: null,
+    //     //     parkeerplaatsen:null,
+    //     //     test: null
+
+
+    //     // };
+    // }
 
     // single websocket instance for the own application and constantly trying to reconnect.
 
     componentDidMount() {
         this.connect();
     }
+
+
+    updateOverzichtAlles = (incObject) => {
+        console.log("A");
+        console.log(incObject);
+        delete incObject.message;
+
+
+    //    this.state.parkeerplaatsen = incObject;
+
+        var newObject  = {...this.state.parkeerplaatsen};
+        newObject.KontichVrij = incObject.KontichVrij;
+        newObject.KontichBezet = incObject.KontichBezet;
+        newObject.KontichTotal = incObject.KontichTotal;
+
+        newObject.BrusselVrij = incObject.BrusselVrij;
+        newObject.BrusselBezet = incObject.BrusselBezet;
+        newObject.BrusselTotal = incObject.BrusselTotal;
+
+        newObject.AntwerpenVrij = incObject.AntwerpenVrij;
+        newObject.AntwerpenBezet = incObject.AntwerpenBezet;
+        newObject.AntwerpenTotal = incObject.AntwerpenTotal;
+
+        this.setState({
+            parkeerplaatsen: newObject
+          });
+    };
+
 
     timeout = 250; // Initial timeout duration as a class variable
 
@@ -43,11 +95,31 @@ export default class Home extends Component {
 
 
 
+        
+
         ws.onmessage = evt => {
             // listen to data sent from the websocket server
             //const message = JSON.parse(evt.data)
             console.log(evt.data)
+
+            var incObject = null;
+            incObject = JSON.parse(evt.data);
+
+            if(incObject != null) {
+                switch(incObject.message) {
+                    case "":
+                    // code block
+                    break;
+                    case "overzichtAlles":
+                        this.updateOverzichtAlles(incObject);
+                    break;
+                    default:
+                    // code block 
+                }
+            }
         };
+
+
 
 
         // websocket onclose event listener
@@ -91,10 +163,13 @@ export default class Home extends Component {
     //    const {websocket} = this.props // websocket instance passed as props to the child component.
         console.log("clicked");
         try {
-            this.state.ws.send({
+
+            var formatMessage = {
                 "action": "getParkingSpots", 
-                "data": ""
-            }) //send data to the server
+                "data": "AA"
+            };
+
+            this.state.ws.send(formatMessage); //send data to the server
         } catch (error) {
             console.log(error) // catch error
         }
@@ -103,9 +178,52 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <div id="dashboardContainer"></div>
-                <div id="loadedContainer"></div>
-                <div id="errorContainer"></div>
+            {/* //     <div id="dashboardContainer"></div>
+            //     <div id="loadedContainer"></div>
+            //     <div id="errorContainer"></div> */}
+
+            <h1>Overzicht</h1>
+
+            
+
+            <table>
+                <tbody>
+                <tr>
+                    <th>parkeerplaats</th>
+                    <th>beschikbaar</th>
+                    <th>bezet</th>
+                    <th>totaal</th>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Kontich</td>
+
+                    <td>{this.state.parkeerplaatsen.KontichVrij}</td>
+                    <td>{this.state.parkeerplaatsen.KontichBezet}</td>
+                    <td>{this.state.parkeerplaatsen.KontichTotal}</td>
+                    <td>{this.state.parkeerplaatsen.KontichVrij ? <NavLink to="/detail/Kontich">detailpage</NavLink> : null} </td>
+                </tr>
+
+                <tr>
+                    <td>Antwerpen</td>
+                    
+                    <td>{this.state.parkeerplaatsen.AntwerpenVrij}</td>
+                    <td>{this.state.parkeerplaatsen.AntwerpenBezet}</td>
+                    <td>{this.state.parkeerplaatsen.AntwerpenTotal}</td>
+                    <td>{this.state.parkeerplaatsen.AntwerpenVrij ? <NavLink to="/detail/Antwerpen">detailpage</NavLink> : null} </td>
+                </tr>
+
+                <tr>
+                    <td>Brussel</td>
+                    
+                    <td>{this.state.parkeerplaatsen.BrusselVrij}</td>
+                    <td>{this.state.parkeerplaatsen.BrusselBezet}</td>
+                    <td>{this.state.parkeerplaatsen.BrusselTotal}</td>
+                    <td>{this.state.parkeerplaatsen.BrusselVrij ? <NavLink to="/detail/Brussel">detailpage</NavLink> : null} </td>
+                </tr>
+                </tbody>
+            </table>
 
                 <button onClick={this.handleClick}>Click Me</button>
             </div>

@@ -29,7 +29,7 @@ function App() {
               <Route path="/"  exact component={Home} />
               <Route path="/billing" exact component={Billing} />
               <Route path="/post" exact  component={Post} />
-              <Route path="/post/:post_id" exact component={DetailPage} />
+              <Route path="/detail/:plaats" exact component={DetailPage} />
               <Route render={() => <div>404</div>} />
             </Switch>
           </div>
