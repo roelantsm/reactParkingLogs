@@ -20,7 +20,17 @@ const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 export default class DetailPage extends Component {
 
     state = {
-        id: null
+        id: null,
+        detailPage: {
+            gemeente:"",
+            groupId:"",
+            huisnr:"",
+            latitude:"",
+            longitude:"",
+            postcode: "",
+            straat: "",
+            devices:[]
+        }
     }
 
 
@@ -169,12 +179,58 @@ export default class DetailPage extends Component {
         return new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
     }
 
+
+
+    wait = (ms) => {
+        var start = new Date().getTime();
+        var end = start;
+        while(end < start + ms) {
+          end = new Date().getTime();
+        }
+      }
+
+
+
+    callProperties = () => {
+        console.log('callProperties');
+
+        var test = null;
+        test = this.props.ophalenDetailData();
+        console.log(test);
+
+        // var test2 = test;
+
+        // if (test.gemeente == "" ) {
+        //     console.log("empty");
+        // }
+
+        // else {
+        //     console.log('test', test2);
+
+        //     test = JSON.parse(test2);
+        //     console.log('testParsed', test2);
+
+        //     var test3 =  test.item;
+        //     console.log('test2',test3 );
+
+        //     var newObject  = {...test3};
+        //     console.log('newObject', newObject);
+            
+             this.setState({
+                 detailPage: test
+             });
+        // }
+      }
+    
+
     componentDidMount(){
+
+        this.props.loadDetaildata();
+
         let id = this.props.match.params.plaats;
         this.setState({
             id:id
         })
-
 
         var awsData = {
             cognitoAuthenticatedUserName:'samuel',
@@ -190,8 +246,12 @@ export default class DetailPage extends Component {
         }
 
         this.embedDashboardCognitoAuthenticated(awsData);
-    }
 
+
+        setInterval(() => {
+            this.callProperties();
+           }, 15000);
+    }
 
     render() {
         return (
@@ -199,9 +259,52 @@ export default class DetailPage extends Component {
                 DetailPage {this.state.id}
 
 
+                <div>
+                     <h3>gemeente</h3>
+                    <p>{this.state.detailPage.gemeente}</p>
+
+                    <h3>groupId</h3>
+                    <p>{this.state.detailPage.groupId}</p>
+
+                    <h3>huisnr</h3>
+                    <p>{this.state.detailPage.huisnr}</p>
+
+                    <h3>latitude</h3>
+                    <p>{this.state.detailPage.latitude}</p>
+
+                    <h3>longitude</h3>
+                    <p>{this.state.detailPage.longitude}</p>
+
+                    <h3>postcode</h3>
+                    <p>{this.state.detailPage.postcode}</p>
+
+                    <h3>straat</h3>
+                    <p>{this.state.detailPage.straat}</p>
+
+
+                    <h3>devices</h3>
+
+                    {
+                        ( !this.state.detailPage.devices.length && !this.state.detailPage.devices.length)? null: this.state.detailPage.devices.map((device, index)=> {
+
+                            return <div key={device.deviceId}>
+                                <div>    
+                                <ul>
+                                        <li>deviceId:  {device.deviceId} </li>
+                                        <li>isBezet:  {device.isBezet} </li>
+                                    </ul>
+                                </div>
+                                <br/>
+                            </div>
+                        })
+                    }
+                </div>
+
+
             <div id="dashboardContainer"></div>
             <div id="loadedContainer"></div>
             <div id="errorContainer"></div>
+
             </div>
         )
     }
