@@ -223,7 +223,7 @@ export default class DetailPage extends Component {
       }
     
 
-    componentDidMount(){
+      componentDidMount(){
 
         this.props.loadDetaildata();
 
@@ -252,6 +252,15 @@ export default class DetailPage extends Component {
             this.callProperties();
            }, 15000);
     }
+
+
+
+    componentDidUpdate(prevProps) {
+        if (this.props.id !== prevProps.id) {
+            console.log("changed pm");
+        }
+      }
+    
 
     render() {
         return (
