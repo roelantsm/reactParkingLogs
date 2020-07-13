@@ -11,6 +11,8 @@ var AWS = require('aws-sdk');
 global.fetch = require('node-fetch')
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 
+const hulpfuncties = require('../hulpfuncties/getDashboard');
+
 
 export default class Billing extends Component {
 
@@ -178,7 +180,10 @@ export default class Billing extends Component {
             cognitoAuthenticatedLogins: 'cognito-idp.eu-west-1.amazonaws.com/eu-west-1_Z4bkJQ9Df'
         }
 
-        this.embedDashboardCognitoAuthenticated(awsData);
+
+        hulpfuncties.embedDashboardCognitoAuthenticated(awsData);
+
+       // this.embedDashboardCognitoAuthenticated(awsData);
     
         
     }
