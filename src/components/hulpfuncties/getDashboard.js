@@ -43,6 +43,7 @@ export  const embedDashboard = (embedUrl, id) => {
         params.url = embedUrl;
         params.container = containerDiv;
         params.height = "1500px";
+        params.parameters = {};    
         params.parameters.groupId = id ;           
     }
     
