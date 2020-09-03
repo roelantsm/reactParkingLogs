@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 // import {Link} from 'react-router-dom'
+import { Table } from 'react-bootstrap';
 // import { setTimeout } from 'timers'
 
 import { NavLink } from 'react-router-dom'; 
+import '../../App.css';
 
 
 export default class Home extends Component {
@@ -50,7 +52,7 @@ export default class Home extends Component {
 
         <h1>Overzicht</h1>     
 
-            <table>
+            <Table  striped bordered hover>
                 <tbody>
                 <tr>
                     <th>parkeerplaats</th>
@@ -87,7 +89,7 @@ export default class Home extends Component {
                     <td>{this.state.parkeerplaatsen ? <NavLink to="/detail/Brussel">detailpage</NavLink> : ""} </td>
                 </tr>
                 </tbody>
-            </table>
+            </Table >
         </div>
         )
     }

@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 
 // import { NavLink } from 'react-router-dom'; 
 import { Button } from 'react-bootstrap';
+import '../../App.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 

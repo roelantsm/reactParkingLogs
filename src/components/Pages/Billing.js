@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import $ from 'jquery';
 import axios from 'axios';
+import '../../App.css';
 var QuickSightEmbedding = require("amazon-quicksight-embedding-sdk");
 var AWS = require('aws-sdk');
-//var QuickSightEmbedding2 = require('./../libs/quicksight-2018-04-01.min.json')
+
+//var QuickSightEmbedding2 = rssequire('./../libs/quicksight-2018-04-01.min.json')
 
 // const sts = new AWS.STS();
 

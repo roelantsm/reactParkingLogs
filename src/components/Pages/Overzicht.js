@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {embedDashboardCognitoAuthenticated} from '../hulpfuncties/getDashboard';
-
+import '../../App.css';
 
 //import $ from 'jquery';
 // import axios from 'axios';

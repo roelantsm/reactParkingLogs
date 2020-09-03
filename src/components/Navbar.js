@@ -1,45 +1,54 @@
 import React from 'react'
+import '../App.css';
 
 import { NavLink } from 'react-router-dom'; 
+
+import { Navbar } from 'react-bootstrap';
+//import { NavDropdown } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
+
 
 
 // import Home from './Pages/Home';
 // import Billing from './Pages/Billing';
 // import Post from './Pages/Post';
 
-const  Navbar = () => {
+const  Navbar2 = () => {
     
     return (
         <div>
-            <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+          <Navbar bg="light" expand="lg">
+            <Navbar.Brand href="#home">Monitoring Parkings Cronos</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+    
+            <Nav.Link> 
+                <NavLink  class="navBarLink" to="/">Home
+                    </NavLink>
+            </Nav.Link>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                
-                    <ul class="navbar-nav">
+    
+            <Nav.Link> 
+                <NavLink  class="navBarLink" to="/overzicht">overzicht
+                    </NavLink>
+            </Nav.Link>
+            <Nav.Link> 
+                <NavLink  class="navBarLink" to="/billing">billing
+                    </NavLink>
+            </Nav.Link>
+            <Nav.Link> 
+                <NavLink  class="navBarLink" to="/events">Event
+                    </NavLink>
+            </Nav.Link>
 
-                        <li class="nav-item active">
-                            <NavLink to="/">Home</NavLink>
-                        </li>
-
-                        <li class="nav-item">
-                            <NavLink to="/overzicht">overzicht</NavLink>
-                        </li>
-
-                        <li class="nav-item">
-                            <NavLink to="/billing">billing</NavLink>
-                        </li>
-
-                        <li class="nav-item">
-                            {/* <NavLink to="/post">Post</NavLink> */}
-                            <NavLink to="/events">Event</NavLink>
-                        </li>
-
-                    </ul>
-
-                </div>
-            </nav>
+                </Nav>
+            </Navbar.Collapse>
+            </Navbar>
         </div>
+
+
     )
 }
 
-export default Navbar;
+export default Navbar2;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {embedDashboardCognitoAuthenticated} from '../hulpfuncties/getDashboard';
 // import { NavLink } from 'react-router-dom'; 
+import '../../App.css';
 
 
 

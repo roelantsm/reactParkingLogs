@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 // import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 //import AwsConnectie from './components/hulpfuncties/awsConnectie';
@@ -25,6 +27,8 @@ import 'react-notifications/lib/notifications.css';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+//import { LinkContainer } from "react-router-bootstrap";
 
 
 export default class App extends Component {
@@ -487,11 +491,6 @@ ophalenDetailData = () => {
 
 }
 
-
-
-
-
-notifivatties
 render() {
 
 
