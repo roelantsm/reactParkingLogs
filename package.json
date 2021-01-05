@@ -9,7 +9,7 @@
     "amazon-cognito-identity-js": "^3.2.4",
     "amazon-quicksight-embedding-sdk": "^1.0.6",
     "aws-sdk": "^2.636.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
     "jquery": "^3.4.1",
     "js-polyfills": "^0.1.42",
